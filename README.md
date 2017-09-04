@@ -1,2 +1,2 @@
-# app_store
-#### 防 Google play 项目 MVP+VM 开发，使用rxjava、retrofit、dagger2、databinding 等。
+### MVP 
+#### 基于 MVP架构 搭建，使用rxjava、retrofit、dagger2、databinding 等。
