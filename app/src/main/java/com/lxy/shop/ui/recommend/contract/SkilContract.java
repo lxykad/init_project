@@ -1,9 +1,7 @@
 package com.lxy.shop.ui.recommend.contract;
 
 import com.lxy.shop.common.base.BaseView;
-import com.lxy.shop.common.rx.ResponseBean;
 import com.lxy.shop.ui.recommend.SkilBean;
-import com.lxy.shop.ui.recommend.bean.RecommendBean;
 
 import java.util.List;
 
