@@ -4,8 +4,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.lxy.shop.BuildConfig;
 import com.lxy.shop.common.base.BaseApplication;
-import com.lxy.shop.common.http.HttpHelper;
-import com.lxy.shop.common.http.ParamsInterceptor;
 import com.lxy.shop.common.rx.RxErrorHandler;
 import com.lxy.shop.data.api.ApiService;
 
@@ -59,7 +57,6 @@ public class HttpModule {
         // 如果使用到HTTPS，我们需要创建SSLSocketFactory，并设置到client
         return builder
 
-                .addInterceptor(new ParamsInterceptor(BaseApplication.getInstance(),gson))
                 // 连接超时时间设置
                 .connectTimeout(10, TimeUnit.SECONDS)
                 // 读取超时时间设置

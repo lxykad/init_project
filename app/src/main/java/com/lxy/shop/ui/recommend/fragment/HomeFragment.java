@@ -6,7 +6,6 @@ import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lxy.shop.R;
-import com.lxy.shop.common.base.BaseFragment;
 import com.lxy.shop.common.base.BaseMainFragment;
 import com.lxy.shop.databinding.FragmentRecommendBinding;
 import com.lxy.shop.di.component.AppComponent;
