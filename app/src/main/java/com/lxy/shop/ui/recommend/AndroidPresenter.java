@@ -3,10 +3,7 @@ package com.lxy.shop.ui.recommend;
 import android.Manifest;
 import android.app.Activity;
 
-import com.google.common.eventbus.Subscribe;
 import com.lxy.shop.common.base.BasePresenter;
-import com.lxy.shop.common.rx.BaseBean;
-import com.lxy.shop.common.rx.ResponseBean;
 import com.lxy.shop.common.rx.RxHttpResponse;
 import com.lxy.shop.common.rx.observer.ProgressObserver;
 import com.lxy.shop.ui.recommend.contract.SkilContract;
@@ -16,20 +13,14 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import io.reactivex.Observer;
-import io.reactivex.Scheduler;
-import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
-import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by lxy on 2017/5/11.
  */
 
 public class AndroidPresenter extends BasePresenter<SkilModel, SkilContract.View> {
-
 
     @Inject
     public AndroidPresenter(SkilModel mModel, SkilContract.View mView) {

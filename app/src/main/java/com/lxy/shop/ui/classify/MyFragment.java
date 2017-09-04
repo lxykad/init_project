@@ -5,26 +5,19 @@ import android.support.annotation.Nullable;
 import android.view.View;
 
 import com.lxy.shop.R;
-import com.lxy.shop.common.base.BaseFragment;
+import com.lxy.shop.common.base.BaseMainFragment;
 import com.lxy.shop.di.component.AppComponent;
 
 /**
  * Created by lxy on 2017/6/8.
  */
 
-public class MyFragment extends BaseFragment {
-
+public class MyFragment extends BaseMainFragment {
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-    }
-
-    @Override
-    public void onHiddenChanged(boolean hidden) {
-        super.onHiddenChanged(hidden);
-        System.out.println("MyFragment======onHiddenChanged:"+hidden);
     }
 
     @Override

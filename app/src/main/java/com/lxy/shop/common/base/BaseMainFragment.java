@@ -17,9 +17,9 @@ import com.lxy.shop.di.component.AppComponent;
 import javax.inject.Inject;
 
 /**
- * 结合viewpager 实现fragment的懒加载
+ * 首页hiden show 方法展示fragment的方式 实现fragment的懒加载
  */
-public abstract class BaseFragment<T extends BasePresenter> extends Fragment implements BaseView {
+public abstract class BaseMainFragment<T extends BasePresenter> extends Fragment implements BaseView {
 
     private ContentMultiStatusBinding mBinding;
     private LayoutInflater mInflater;
@@ -32,10 +32,9 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
     protected ViewDataBinding mChildBinding;
 
     @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
-
-        if (isVisibleToUser) {
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if (!hidden) {
             lazyFetchDataIfPrepared();
         }
     }
@@ -65,7 +64,6 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
         initChildBinding();
 
         mIsViewPrepared = true;
-        lazyFetchDataIfPrepared();
 
     }
 
@@ -152,19 +150,19 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
 
     @Override
     public void showLoading() {
-        System.out.println("HomeFragment======showLoading" );
+        System.out.println("HomeFragment======showLoading");
         showProgressLayout();
     }
 
     @Override
     public void dismissLoading() {
-        System.out.println("HomeFragment======dismissLoading" );
+        System.out.println("HomeFragment======dismissLoading");
         showContentView();
     }
 
     @Override
     public void showError(String msg) {
-        System.out.println("HomeFragment======showError" );
+        System.out.println("HomeFragment======showError");
         showEmptyView(msg);
     }
 }

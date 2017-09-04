@@ -6,24 +6,19 @@ import android.view.View;
 
 import com.lxy.shop.R;
 import com.lxy.shop.common.base.BaseFragment;
+import com.lxy.shop.common.base.BaseMainFragment;
 import com.lxy.shop.di.component.AppComponent;
 
 /**
  * Created by lxy on 2017/6/8.
  */
 
-public class AndroidFragment extends BaseFragment {
+public class AndroidFragment extends BaseMainFragment {
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-    }
-
-    @Override
-    public void onHiddenChanged(boolean hidden) {
-        super.onHiddenChanged(hidden);
-        System.out.println("AndroidFragment======onHiddenChanged:"+hidden);
     }
 
     @Override

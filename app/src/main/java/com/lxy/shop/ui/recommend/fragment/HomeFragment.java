@@ -7,6 +7,7 @@ import android.widget.Toast;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lxy.shop.R;
 import com.lxy.shop.common.base.BaseFragment;
+import com.lxy.shop.common.base.BaseMainFragment;
 import com.lxy.shop.databinding.FragmentRecommendBinding;
 import com.lxy.shop.di.component.AppComponent;
 import com.lxy.shop.di.component.DaggerFragmentComponent;
@@ -23,17 +24,11 @@ import java.util.List;
  * Created by lxy on 2017/6/8.
  */
 
-public class HomeFragment extends BaseFragment<AndroidPresenter> implements SkilContract.View {
+public class HomeFragment extends BaseMainFragment<AndroidPresenter> implements SkilContract.View {
 
     private FragmentRecommendBinding mBinding;
     private RecommendAdapter mAdapter;
     private List<SkilBean> mList;
-
-    @Override
-    public void onHiddenChanged(boolean hidden) {
-        super.onHiddenChanged(hidden);
-        System.out.println("HomeFragment======onHiddenChanged:"+hidden);
-    }
 
     @Override
     protected void visiableToUser() {
