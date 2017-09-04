@@ -21,6 +21,12 @@ public class AndroidFragment extends BaseFragment {
     }
 
     @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        System.out.println("AndroidFragment======onHiddenChanged:"+hidden);
+    }
+
+    @Override
     protected void visiableToUser() {
         System.out.println("AndroidFragment======visiableToUser");
     }

@@ -25,6 +25,12 @@ public class IosFragment extends BaseFragment {
     }
 
     @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        System.out.println("IosFragment======onHiddenChanged:"+hidden);
+    }
+
+    @Override
     protected void visiableToUser() {
         System.out.println("IosFragment======visiableToUser");
     }

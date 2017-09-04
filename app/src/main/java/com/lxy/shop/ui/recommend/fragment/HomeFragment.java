@@ -23,20 +23,26 @@ import java.util.List;
  * Created by lxy on 2017/6/8.
  */
 
-public class RecommendFragment extends BaseFragment<AndroidPresenter> implements SkilContract.View {
+public class HomeFragment extends BaseFragment<AndroidPresenter> implements SkilContract.View {
 
     private FragmentRecommendBinding mBinding;
     private RecommendAdapter mAdapter;
     private List<SkilBean> mList;
 
     @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        System.out.println("HomeFragment======onHiddenChanged:"+hidden);
+    }
+
+    @Override
     protected void visiableToUser() {
-        System.out.println("RecommendFragment======visiableToUser" );
+        System.out.println("HomeFragment======visiableToUser" );
     }
 
     @Override
     protected void firstVisiableToUser() {
-        System.out.println("RecommendFragment======firstVisiableToUser" );
+        System.out.println("HomeFragment======firstVisiableToUser" );
         init();
         LoadData();
     }
@@ -87,7 +93,7 @@ public class RecommendFragment extends BaseFragment<AndroidPresenter> implements
     public void showResust(List<SkilBean> list) {
 
         mAdapter.addItems(list);
-        System.out.println("RecommendFragment======count:" + list.size());
+        System.out.println("HomeFragment======count:" + list.size());
     }
 
     @Override

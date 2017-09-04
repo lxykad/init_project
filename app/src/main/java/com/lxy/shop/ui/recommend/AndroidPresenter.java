@@ -47,40 +47,13 @@ public class AndroidPresenter extends BasePresenter<SkilModel, SkilContract.View
 
                             mModel.getList("Android", 10, 1)
                                     .compose(RxHttpResponse.<List<SkilBean>>handResult())
-                                    .subscribe(new ProgressObserver<List<SkilBean>>(mContext,mView) {
+                                    .subscribe(new ProgressObserver<List<SkilBean>>(mContext, mView) {
                                         @Override
                                         public void onNext(List<SkilBean> list) {
                                             mView.showResust(list);
-                                            System.out.println("size====="+list.size());
+                                            System.out.println("size=====" + list.size());
                                         }
                                     });
-
-
-//                            mModel.getList("Android", 10, 1)
-//                                    .subscribeOn(Schedulers.io())
-//                                    .observeOn(AndroidSchedulers.mainThread())
-//                                    .subscribe(new Observer<BaseBean<List<SkilBean>>>() {
-//                                        @Override
-//                                        public void onSubscribe(Disposable d) {
-//
-//                                        }
-//
-//                                        @Override
-//                                        public void onNext(BaseBean<List<SkilBean>> listBaseBean) {
-//                                            System.out.println("AndroidPresenter==suc=====");
-//                                        }
-//
-//                                        @Override
-//                                        public void onError(Throwable e) {
-//                                            System.out.println("AndroidPresenter===err===="+e.toString());
-//                                        }
-//
-//                                        @Override
-//                                        public void onComplete() {
-//
-//                                        }
-//                                    });
-
 
                         } else {
                             System.out.println("AndroidPresenter=======拒绝");

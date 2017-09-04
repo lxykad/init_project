@@ -38,6 +38,21 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
         if (isVisibleToUser) {
             lazyFetchDataIfPrepared();
         }
+
+//        if (isVisibleToUser) {
+//            if (isFirstUserVisible) {
+//                initPrepare();
+//            } else {
+//                onUserVisible();
+//            }
+//        } else {
+//            if (isFirstUserInVisible) {
+//                isFirstUserInVisible = false;
+//                onFirstUserInVisible();
+//            } else {
+//                onUserInVisible();
+//            }
+//        }
     }
 
     @Nullable
@@ -152,19 +167,19 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
 
     @Override
     public void showLoading() {
-        System.out.println("RecommendFragment======showLoading" );
+        System.out.println("HomeFragment======showLoading" );
         showProgressLayout();
     }
 
     @Override
     public void dismissLoading() {
-        System.out.println("RecommendFragment======dismissLoading" );
+        System.out.println("HomeFragment======dismissLoading" );
         showContentView();
     }
 
     @Override
     public void showError(String msg) {
-        System.out.println("RecommendFragment======showError" );
+        System.out.println("HomeFragment======showError" );
         showEmptyView(msg);
     }
 }

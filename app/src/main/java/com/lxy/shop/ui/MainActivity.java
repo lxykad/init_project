@@ -12,7 +12,7 @@ import com.lxy.shop.di.component.AppComponent;
 import com.lxy.shop.ui.classify.MyFragment;
 import com.lxy.shop.ui.game.IosFragment;
 import com.lxy.shop.ui.ranking.AndroidFragment;
-import com.lxy.shop.ui.recommend.fragment.RecommendFragment;
+import com.lxy.shop.ui.recommend.fragment.HomeFragment;
 
 import java.util.ArrayList;
 
@@ -39,7 +39,7 @@ public class MainActivity extends BaseActivity {
 
     private void initData() {
         mFragments = new ArrayList<>();
-        mFragments.add(new RecommendFragment());
+        mFragments.add(new HomeFragment());
         mFragments.add(new AndroidFragment());
         mFragments.add(new IosFragment());
         mFragments.add(new MyFragment());
