@@ -14,6 +14,8 @@ import com.lxy.shop.R;
 import com.lxy.shop.databinding.ContentMultiStatusBinding;
 import com.lxy.shop.di.component.AppComponent;
 
+import org.reactivestreams.Subscription;
+
 import javax.inject.Inject;
 
 /**
@@ -26,6 +28,8 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
 
     private boolean mIsViewPrepared; // 标识fragment视图已经初始化完毕
     private boolean mHasFetchData; // 标识已经触发过懒加载数据
+
+    protected Subscription subscription;
 
     @Inject
     public T mPresenter;
@@ -166,5 +170,10 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
     public void showError(String msg) {
         System.out.println("HomeFragment======showError" );
         showEmptyView(msg);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
     }
 }

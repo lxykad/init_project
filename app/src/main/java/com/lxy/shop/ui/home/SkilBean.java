@@ -1,4 +1,4 @@
-package com.lxy.shop.ui.recommend;
+package com.lxy.shop.ui.home;
 
 import java.io.Serializable;
 import java.util.List;

@@ -2,7 +2,7 @@ package com.lxy.shop.di.component;
 
 import com.lxy.shop.di.module.FragmentModule;
 import com.lxy.shop.di.scope.ActivityScope;
-import com.lxy.shop.ui.recommend.fragment.HomeFragment;
+import com.lxy.shop.ui.home.fragment.HomeFragment;
 
 import dagger.Component;
 

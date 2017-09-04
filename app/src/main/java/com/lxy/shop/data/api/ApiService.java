@@ -1,8 +1,7 @@
 package com.lxy.shop.data.api;
 
 import com.lxy.shop.common.rx.BaseBean;
-import com.lxy.shop.common.rx.ResponseBean;
-import com.lxy.shop.ui.recommend.SkilBean;
+import com.lxy.shop.ui.home.SkilBean;
 
 import java.util.List;
 

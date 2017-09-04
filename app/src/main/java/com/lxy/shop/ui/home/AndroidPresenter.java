@@ -1,4 +1,4 @@
-package com.lxy.shop.ui.recommend;
+package com.lxy.shop.ui.home;
 
 import android.Manifest;
 import android.app.Activity;
@@ -6,7 +6,7 @@ import android.app.Activity;
 import com.lxy.shop.common.base.BasePresenter;
 import com.lxy.shop.common.rx.RxHttpResponse;
 import com.lxy.shop.common.rx.observer.ProgressObserver;
-import com.lxy.shop.ui.recommend.contract.SkilContract;
+import com.lxy.shop.ui.home.contract.SkilContract;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.util.List;

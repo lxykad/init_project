@@ -150,19 +150,22 @@ public abstract class BaseMainFragment<T extends BasePresenter> extends Fragment
 
     @Override
     public void showLoading() {
-        System.out.println("HomeFragment======showLoading");
         showProgressLayout();
     }
 
     @Override
     public void dismissLoading() {
-        System.out.println("HomeFragment======dismissLoading");
         showContentView();
     }
 
     @Override
     public void showError(String msg) {
-        System.out.println("HomeFragment======showError");
         showEmptyView(msg);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        System.out.println("baseMainFragment======destory");
     }
 }

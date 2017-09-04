@@ -1,4 +1,4 @@
-package com.lxy.shop.ui.recommend.adapter;
+package com.lxy.shop.ui.home.adapter;
 
 import android.content.Context;
 import android.support.annotation.LayoutRes;
@@ -7,7 +7,7 @@ import android.support.annotation.Nullable;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.lxy.shop.R;
-import com.lxy.shop.ui.recommend.SkilBean;
+import com.lxy.shop.ui.home.SkilBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +16,7 @@ import java.util.List;
  * Created by lxy on 2017/6/9.
  */
 
-public class RecommendAdapter extends BaseQuickAdapter<SkilBean, BaseViewHolder> {
+public class HomeAdapter extends BaseQuickAdapter<SkilBean, BaseViewHolder> {
 
     private List<SkilBean> mList = new ArrayList<>();
     private Context mContext;
@@ -27,7 +27,7 @@ public class RecommendAdapter extends BaseQuickAdapter<SkilBean, BaseViewHolder>
         notifyDataSetChanged();
     }
 
-    public RecommendAdapter(@LayoutRes int layoutResId, @Nullable List<SkilBean> list, Context context) {
+    public HomeAdapter(@LayoutRes int layoutResId, @Nullable List<SkilBean> list, Context context) {
         super(layoutResId, list);
 
         mList = list;

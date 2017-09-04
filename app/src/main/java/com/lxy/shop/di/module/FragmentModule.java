@@ -1,8 +1,8 @@
 package com.lxy.shop.di.module;
 
 import com.lxy.shop.data.api.ApiService;
-import com.lxy.shop.ui.recommend.SkilModel;
-import com.lxy.shop.ui.recommend.contract.SkilContract;
+import com.lxy.shop.ui.home.SkilModel;
+import com.lxy.shop.ui.home.contract.SkilContract;
 
 import dagger.Module;
 import dagger.Provides;

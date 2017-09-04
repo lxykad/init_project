@@ -1,4 +1,4 @@
-package com.lxy.shop.ui.recommend.fragment;
+package com.lxy.shop.ui.home.fragment;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
@@ -11,10 +11,10 @@ import com.lxy.shop.databinding.FragmentRecommendBinding;
 import com.lxy.shop.di.component.AppComponent;
 import com.lxy.shop.di.component.DaggerFragmentComponent;
 import com.lxy.shop.di.module.FragmentModule;
-import com.lxy.shop.ui.recommend.AndroidPresenter;
-import com.lxy.shop.ui.recommend.SkilBean;
-import com.lxy.shop.ui.recommend.adapter.RecommendAdapter;
-import com.lxy.shop.ui.recommend.contract.SkilContract;
+import com.lxy.shop.ui.home.AndroidPresenter;
+import com.lxy.shop.ui.home.SkilBean;
+import com.lxy.shop.ui.home.adapter.HomeAdapter;
+import com.lxy.shop.ui.home.contract.SkilContract;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +26,7 @@ import java.util.List;
 public class HomeFragment extends BaseMainFragment<AndroidPresenter> implements SkilContract.View {
 
     private FragmentRecommendBinding mBinding;
-    private RecommendAdapter mAdapter;
+    private HomeAdapter mAdapter;
     private List<SkilBean> mList;
 
     @Override
@@ -66,7 +66,7 @@ public class HomeFragment extends BaseMainFragment<AndroidPresenter> implements 
 
     public void init() {
         mList = new ArrayList<>();
-        mAdapter = new RecommendAdapter(R.layout.list_item_recommend_fragment, mList,getContext());
+        mAdapter = new HomeAdapter(R.layout.list_item_recommend_fragment, mList,getContext());
         mBinding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mBinding.recyclerView.setAdapter(mAdapter);
 

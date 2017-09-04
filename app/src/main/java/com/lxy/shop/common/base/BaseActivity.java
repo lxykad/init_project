@@ -26,4 +26,10 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
     }
 
     protected abstract void setActivityComponent(AppComponent appComponent);
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        System.out.println("baseActivity=======onDestory");
+    }
 }

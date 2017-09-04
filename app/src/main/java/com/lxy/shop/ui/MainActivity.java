@@ -12,7 +12,7 @@ import com.lxy.shop.di.component.AppComponent;
 import com.lxy.shop.ui.classify.MyFragment;
 import com.lxy.shop.ui.game.IosFragment;
 import com.lxy.shop.ui.ranking.AndroidFragment;
-import com.lxy.shop.ui.recommend.fragment.HomeFragment;
+import com.lxy.shop.ui.home.fragment.HomeFragment;
 
 import java.util.ArrayList;
 
