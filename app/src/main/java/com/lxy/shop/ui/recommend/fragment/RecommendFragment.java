@@ -7,13 +7,11 @@ import android.widget.Toast;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lxy.shop.R;
 import com.lxy.shop.common.base.BaseFragment;
-import com.lxy.shop.common.rx.ResponseBean;
 import com.lxy.shop.databinding.FragmentRecommendBinding;
 import com.lxy.shop.di.component.AppComponent;
 import com.lxy.shop.di.component.DaggerFragmentComponent;
 import com.lxy.shop.di.module.FragmentModule;
 import com.lxy.shop.ui.recommend.AndroidPresenter;
-import com.lxy.shop.ui.recommend.AppBean;
 import com.lxy.shop.ui.recommend.SkilBean;
 import com.lxy.shop.ui.recommend.adapter.RecommendAdapter;
 import com.lxy.shop.ui.recommend.contract.SkilContract;
@@ -33,7 +31,7 @@ public class RecommendFragment extends BaseFragment<AndroidPresenter> implements
 
     @Override
     protected void visiableToUser() {
-
+        System.out.println("RecommendFragment======visiableToUser" );
     }
 
     @Override
@@ -58,7 +56,6 @@ public class RecommendFragment extends BaseFragment<AndroidPresenter> implements
     @Override
     public void initChildBinding() {
         mBinding = (FragmentRecommendBinding) mChildBinding;
-        System.out.println("RecommendFragment======initChild" );
     }
 
     @Override

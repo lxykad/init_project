@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    <RelativeLayout xmlns:tl="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context="com.lxy.shop.ui.MainActivity">
 
-        <com.flyco.tablayout.SlidingTabLayout
-            android:id="@+id/sliding_tab_layout"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:background="@color/colorPrimary"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
-            app:tl_indicator_color="#33000000"
-            app:tl_indicator_margin_left="2dp"
-            app:tl_indicator_margin_right="2dp"
-            app:tl_indicator_style="BLOCK"
-            app:tl_indicator_width_equal_title="true"
-            app:tl_tab_space_equal="true" />
-
-        <!--app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
-        <android.support.v4.view.ViewPager
-            android:id="@+id/view_pager"
+        <FrameLayout
+            android:id="@+id/framelayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/sliding_tab_layout"
+            android:layout_above="@+id/tab_layout"
             android:background="#ffffff" />
 
+        <com.flyco.tablayout.CommonTabLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:background="#ffffff"
+            tl:tl_iconHeight="23dp"
+            tl:tl_iconWidth="23dp"
+            tl:tl_indicator_color="#2C97DE"
+            tl:tl_indicator_height="0dp"
+            tl:tl_textSelectColor="#2C97DE"
+            tl:tl_textUnselectColor="#66000000"
+            tl:tl_textsize="12sp"
+            tl:tl_underline_color="#DDDDDD"
+            tl:tl_underline_height="1dp" />
 
     </RelativeLayout>
 
