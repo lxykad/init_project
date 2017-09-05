@@ -1,6 +1,5 @@
 package com.lxy.shop.common.base;
 
-
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
@@ -14,10 +13,9 @@ import com.lxy.shop.R;
 import com.lxy.shop.databinding.ContentMultiStatusBinding;
 import com.lxy.shop.di.component.AppComponent;
 
-import org.reactivestreams.Subscription;
-
 import javax.inject.Inject;
 
+import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 
 /**
@@ -31,7 +29,8 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
     private boolean mIsViewPrepared; // 标识fragment视图已经初始化完毕
     private boolean mHasFetchData; // 标识已经触发过懒加载数据
 
-    protected Subscription subscription;
+    protected CompositeDisposable mSubsList = new CompositeDisposable();
+    private Disposable mDisposable;
 
     @Inject
     public T mPresenter;
@@ -107,7 +106,6 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
         mBinding.textTip.setText(msg);
     }
 
-
     public void showView(int viewId) {
 
         for (int i = 0; i < mBinding.rootLayout.getChildCount(); i++) {
@@ -158,24 +156,33 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
 
     @Override
     public void showLoading(Disposable disposable) {
-        System.out.println("HomeFragment======showLoading" );
         showProgressLayout();
+
+        mDisposable = disposable;
+        mSubsList.add(disposable);
     }
 
     @Override
     public void dismissLoading() {
-        System.out.println("HomeFragment======dismissLoading" );
         showContentView();
+        mSubsList.remove(mDisposable);
+    }
+
+    private void unSubscribrAllRxTasks() {
+
+        if (mSubsList.size() > 0) {
+            mSubsList.clear();
+        }
     }
 
     @Override
     public void showError(String msg) {
-        System.out.println("HomeFragment======showError" );
         showEmptyView(msg);
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
+        unSubscribrAllRxTasks();
     }
 }

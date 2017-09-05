@@ -6,7 +6,6 @@ import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.print.PrintHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,20 +48,8 @@ public abstract class BaseMainFragment<T extends BasePresenter> extends Fragment
     private void unSubscribrAllRxTasks() {
 
         if (mSubsList.size() > 0) {
-            System.out.println("mSubsList=======取消订阅：" + mSubsList.size());
             mSubsList.clear();
         }
-    }
-
-
-    //添加RxJava订阅到队列管理
-    public void sub(Disposable task) {
-        mSubsList.add(task);
-    }
-
-    //从队列中移除RxJava订阅
-    public void remove(Disposable task) {
-        mSubsList.remove(task);
     }
 
     @Nullable
@@ -124,7 +111,6 @@ public abstract class BaseMainFragment<T extends BasePresenter> extends Fragment
         showEmptyView();
         mBinding.textTip.setText(msg);
     }
-
 
     public void showView(int viewId) {
 

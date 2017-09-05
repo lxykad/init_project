@@ -31,12 +31,10 @@ public class HomeFragment extends BaseMainFragment<AndroidPresenter> implements 
 
     @Override
     protected void visiableToUser() {
-        System.out.println("HomeFragment======visiableToUser" );
     }
 
     @Override
     protected void firstVisiableToUser() {
-        System.out.println("HomeFragment======firstVisiableToUser" );
         init();
         LoadData();
     }
@@ -84,9 +82,7 @@ public class HomeFragment extends BaseMainFragment<AndroidPresenter> implements 
 
     @Override
     public void showResust(List<SkilBean> list) {
-
         mAdapter.addItems(list);
-        System.out.println("HomeFragment======count:" + list.size());
     }
 
     @Override
