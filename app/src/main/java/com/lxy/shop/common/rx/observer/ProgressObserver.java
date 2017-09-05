@@ -1,8 +1,6 @@
 package com.lxy.shop.common.rx.observer;
 
 import android.content.Context;
-import android.widget.MediaController;
-import android.widget.Toast;
 
 import com.lxy.shop.common.base.BaseView;
 import com.lxy.shop.common.exception.BaseException;
@@ -35,7 +33,7 @@ public abstract class ProgressObserver<T> extends ErrorHandObserver<T> {
     public void onSubscribe(Disposable d) {
 
         if (isShowProgress()) {
-            mView.showLoading();
+            mView.showLoading(d);
         }
     }
 

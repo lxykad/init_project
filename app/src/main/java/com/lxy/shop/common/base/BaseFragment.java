@@ -18,6 +18,8 @@ import org.reactivestreams.Subscription;
 
 import javax.inject.Inject;
 
+import io.reactivex.disposables.Disposable;
+
 /**
  * 结合viewpager 实现fragment的懒加载
  */
@@ -155,7 +157,7 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
 
 
     @Override
-    public void showLoading() {
+    public void showLoading(Disposable disposable) {
         System.out.println("HomeFragment======showLoading" );
         showProgressLayout();
     }

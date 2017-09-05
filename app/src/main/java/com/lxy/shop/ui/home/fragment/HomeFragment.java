@@ -63,7 +63,6 @@ public class HomeFragment extends BaseMainFragment<AndroidPresenter> implements 
         LoadData();
     }
 
-
     public void init() {
         mList = new ArrayList<>();
         mAdapter = new HomeAdapter(R.layout.list_item_recommend_fragment, mList,getContext());

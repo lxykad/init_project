@@ -6,6 +6,7 @@ import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.print.PrintHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,9 @@ import com.lxy.shop.databinding.ContentMultiStatusBinding;
 import com.lxy.shop.di.component.AppComponent;
 
 import javax.inject.Inject;
+
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
 
 /**
  * 首页hiden show 方法展示fragment的方式 实现fragment的懒加载
@@ -27,6 +31,9 @@ public abstract class BaseMainFragment<T extends BasePresenter> extends Fragment
     private boolean mIsViewPrepared; // 标识fragment视图已经初始化完毕
     private boolean mHasFetchData; // 标识已经触发过懒加载数据
 
+    protected CompositeDisposable mSubsList = new CompositeDisposable();
+    private Disposable mDisposable;
+
     @Inject
     public T mPresenter;
     protected ViewDataBinding mChildBinding;
@@ -37,6 +44,25 @@ public abstract class BaseMainFragment<T extends BasePresenter> extends Fragment
         if (!hidden) {
             lazyFetchDataIfPrepared();
         }
+    }
+
+    private void unSubscribrAllRxTasks() {
+
+        if (mSubsList.size() > 0) {
+            System.out.println("mSubsList=======取消订阅：" + mSubsList.size());
+            mSubsList.clear();
+        }
+    }
+
+
+    //添加RxJava订阅到队列管理
+    public void sub(Disposable task) {
+        mSubsList.add(task);
+    }
+
+    //从队列中移除RxJava订阅
+    public void remove(Disposable task) {
+        mSubsList.remove(task);
     }
 
     @Nullable
@@ -149,13 +175,16 @@ public abstract class BaseMainFragment<T extends BasePresenter> extends Fragment
 
 
     @Override
-    public void showLoading() {
+    public void showLoading(Disposable disposable) {
         showProgressLayout();
+        mDisposable = disposable;
+        mSubsList.add(disposable);
     }
 
     @Override
     public void dismissLoading() {
         showContentView();
+        mSubsList.remove(mDisposable);
     }
 
     @Override
@@ -166,6 +195,6 @@ public abstract class BaseMainFragment<T extends BasePresenter> extends Fragment
     @Override
     public void onDestroy() {
         super.onDestroy();
-        System.out.println("baseMainFragment======destory");
+        unSubscribrAllRxTasks();
     }
 }

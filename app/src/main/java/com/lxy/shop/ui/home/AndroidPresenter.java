@@ -14,6 +14,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import io.reactivex.annotations.NonNull;
+import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
 
 /**
@@ -26,7 +27,6 @@ public class AndroidPresenter extends BasePresenter<SkilModel, SkilContract.View
     public AndroidPresenter(SkilModel mModel, SkilContract.View mView) {
         super(mModel, mView);
     }
-
     public void getAndroidData() {
 
         RxPermissions rxPermissions = new RxPermissions((Activity) mContext);
@@ -36,13 +36,12 @@ public class AndroidPresenter extends BasePresenter<SkilModel, SkilContract.View
                     public void accept(@NonNull Boolean aBoolean) throws Exception {
                         if (aBoolean) {
 
-                            mModel.getList("Android", 10, 1)
+                            mModel.getList("Android", 1000, 1)
                                     .compose(RxHttpResponse.<List<SkilBean>>handResult())
                                     .subscribe(new ProgressObserver<List<SkilBean>>(mContext, mView) {
                                         @Override
                                         public void onNext(List<SkilBean> list) {
                                             mView.showResust(list);
-                                            System.out.println("size=====" + list.size());
                                         }
                                     });
 
