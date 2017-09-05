@@ -3,9 +3,11 @@ package com.lxy.shop.common.rx.observer;
 import android.content.Context;
 
 import com.lxy.shop.common.base.BaseView;
+import com.lxy.shop.common.exception.ApiException;
 import com.lxy.shop.common.exception.BaseException;
 
 import io.reactivex.disposables.Disposable;
+import retrofit2.HttpException;
 
 /**
  * Created by lxy
@@ -45,7 +47,7 @@ public abstract class ProgressObserver<T> extends ErrorHandObserver<T> {
     @Override
     public void onError(Throwable e) {
         super.onError(e);
-        System.out.println("err===="+e.toString());
+        System.out.println("err===="+e.getMessage());
         BaseException baseException = mErrorHandler.handleError(e);
         mView.showError(baseException.getDisplayMessage());
     }
