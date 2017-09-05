@@ -1,7 +1,7 @@
 package com.lxy.shop.common.http;
 
 /**
- * Created by lxy on 2017/5/11.
+ * Created by lxy
  */
 
 public class HttpHelper {

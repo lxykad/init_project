@@ -13,21 +13,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by lxy on 2017/6/9.
+ * Created by lxy
  */
 
-public class HomeAdapter extends BaseQuickAdapter<SkilBean, BaseViewHolder> {
+public class HomeAdapter extends BaseQuickAdapter<SkilBean.RealBean, BaseViewHolder> {
 
-    private List<SkilBean> mList = new ArrayList<>();
+    private List<SkilBean.RealBean> mList = new ArrayList<>();
     private Context mContext;
 
-    public void addItems(List<SkilBean> list) {
+    public void addItems(List<SkilBean.RealBean> list) {
         mList.clear();
         mList.addAll(list);
         notifyDataSetChanged();
     }
 
-    public HomeAdapter(@LayoutRes int layoutResId, @Nullable List<SkilBean> list, Context context) {
+    public HomeAdapter(@LayoutRes int layoutResId, @Nullable List<SkilBean.RealBean> list, Context context) {
         super(layoutResId, list);
 
         mList = list;
@@ -35,10 +35,10 @@ public class HomeAdapter extends BaseQuickAdapter<SkilBean, BaseViewHolder> {
     }
 
     @Override
-    protected void convert(BaseViewHolder holder, SkilBean bean) {
+    protected void convert(BaseViewHolder holder, SkilBean.RealBean bean) {
 
-        holder.setText(R.id.text_title, bean.desc)
-                .setText(R.id.text_size, bean.who);
+        holder.setText(R.id.text_title, bean.who)
+                .setText(R.id.text_size, bean.desc);
 
         holder.addOnClickListener(R.id.btn_dl);
 

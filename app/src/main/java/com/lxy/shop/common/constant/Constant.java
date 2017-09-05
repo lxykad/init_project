@@ -1,7 +1,7 @@
 package com.lxy.shop.common.constant;
 
 /**
- * Created by lxy on 2017/6/10.
+ * Created by lxy
  */
 
 public class Constant {

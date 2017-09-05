@@ -6,14 +6,14 @@ import com.lxy.shop.ui.home.SkilBean;
 import java.util.List;
 
 /**
- * Created by lxy on 2017/5/11.
+ * Created by lxy
  */
 
 public interface SkilContract {
 
     interface View extends BaseView{
 
-        void showResust(List<SkilBean> list);
+        void showResust(List<SkilBean.RealBean> list);
         void showNoData();
         void showError(String msg);
     }

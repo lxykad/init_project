@@ -1,7 +1,7 @@
 package com.lxy.shop.common.exception;
 
 /**
- * Created by lxy on 2017/6/6.
+ * Created by lxy
  */
 
 public class ApiException extends BaseException{

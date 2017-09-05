@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * Created by lxy on 2017/5/19.
+ * Created by lxy
  */
 
 public class BaseBean<T> implements Serializable {
@@ -15,4 +15,13 @@ public class BaseBean<T> implements Serializable {
 
     public T results;
 
+    @Override
+    public String toString() {
+        return "BaseBean{" +
+                "message='" + message + '\'' +
+                ", code=" + code +
+                ", error='" + error + '\'' +
+                ", results=" + results +
+                '}';
+    }
 }

@@ -9,7 +9,7 @@ import com.lxy.shop.common.base.BaseMainFragment;
 import com.lxy.shop.di.component.AppComponent;
 
 /**
- * Created by lxy on 2017/6/8.
+ * Created by lxy
  */
 
 public class MyFragment extends BaseMainFragment {

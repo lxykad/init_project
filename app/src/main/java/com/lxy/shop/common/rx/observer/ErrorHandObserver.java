@@ -1,13 +1,12 @@
 package com.lxy.shop.common.rx.observer;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.lxy.shop.common.exception.BaseException;
 import com.lxy.shop.common.rx.RxErrorHandler;
 
 /**
- * Created by lxy on 2017/6/7.
+ * Created by lxy
  */
 
 public abstract class ErrorHandObserver<T> extends BaseObserver<T> {

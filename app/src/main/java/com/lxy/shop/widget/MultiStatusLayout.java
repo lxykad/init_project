@@ -8,7 +8,7 @@ import android.util.AttributeSet;
 import android.widget.FrameLayout;
 
 /**
- * Created by lxy on 2017/6/9.
+ * Created by lxy
  */
 
 public class MultiStatusLayout extends FrameLayout {

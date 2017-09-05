@@ -14,7 +14,7 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 
 /**
- * Created by lxy on 2017/5/11.
+ * Created by lxy
  */
 
 public abstract class BaseActivity<T extends BasePresenter> extends AppCompatActivity {

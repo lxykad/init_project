@@ -6,10 +6,11 @@ import com.lxy.shop.data.api.ApiService;
 import java.util.List;
 
 import io.reactivex.Observable;
+import retrofit2.Response;
 
 
 /**
- * Created by lxy on 2017/5/11.
+ * Created by lxy
  */
 
 public class SkilModel {
@@ -21,7 +22,7 @@ public class SkilModel {
         this.mApiService = mApiService;
     }
 
-    public Observable<BaseBean<List<SkilBean>>> getList(String type, int page, int perPage) {
+    public Observable<Response<SkilBean>> getList(String type, int page, int perPage) {
 
         return mApiService.getSkilList(type, page, perPage);
     }

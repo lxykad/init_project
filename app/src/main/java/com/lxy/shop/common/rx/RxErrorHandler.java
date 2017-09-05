@@ -14,7 +14,7 @@ import java.net.SocketTimeoutException;
 import retrofit2.HttpException;
 
 /**
- * Created by lxy on 2017/6/7.
+ * Created by lxy
  */
 
 public class RxErrorHandler {
@@ -34,24 +34,9 @@ public class RxErrorHandler {
 
             exception.setCode(((ApiException) e).getCode());
 
-        } else if (e instanceof JsonParseException) {
-
-            exception.setCode(BaseException.JSON_ERROR);
-
         } else if (e instanceof HttpException) {
 
             exception.setCode(((HttpException) e).code());
-
-        } else if (e instanceof SocketTimeoutException) {
-
-            exception.setCode(BaseException.SOCKET_TIMEOUT_ERROR);
-
-        } else if (e instanceof SocketException) {
-
-
-        } else {
-
-            exception.setCode(BaseException.UNKNOWN_ERROR);
 
         }
 

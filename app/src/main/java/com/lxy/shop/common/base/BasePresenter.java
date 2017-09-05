@@ -5,7 +5,7 @@ import android.content.Context;
 import android.support.v4.app.Fragment;
 
 /**
- * Created by lxy on 2017/5/11.
+ * Created by lxy
  */
 
 public class BasePresenter<M, V extends BaseView> {

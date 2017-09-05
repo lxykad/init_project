@@ -20,14 +20,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by lxy on 2017/6/8.
+ * Created by lxy
  */
 
 public class HomeFragment extends BaseMainFragment<AndroidPresenter> implements SkilContract.View {
 
     private FragmentRecommendBinding mBinding;
     private HomeAdapter mAdapter;
-    private List<SkilBean> mList;
+    private List<SkilBean.RealBean> mList;
 
     @Override
     protected void visiableToUser() {
@@ -70,7 +70,7 @@ public class HomeFragment extends BaseMainFragment<AndroidPresenter> implements 
         mAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
             @Override
             public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-                SkilBean appBean = mList.get(position);
+                SkilBean.RealBean appBean = mList.get(position);
                 Toast.makeText(view.getContext(), appBean.who, Toast.LENGTH_SHORT).show();
             }
         });
@@ -81,7 +81,7 @@ public class HomeFragment extends BaseMainFragment<AndroidPresenter> implements 
     }
 
     @Override
-    public void showResust(List<SkilBean> list) {
+    public void showResust(List<SkilBean.RealBean> list) {
         mAdapter.addItems(list);
     }
 

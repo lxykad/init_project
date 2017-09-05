@@ -8,7 +8,7 @@ import dagger.Module;
 import dagger.Provides;
 
 /**
- * Created by lxy on 2017/5/11.
+ * Created by lxy
  */
 
 @Module

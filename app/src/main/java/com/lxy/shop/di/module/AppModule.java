@@ -7,7 +7,7 @@ import dagger.Provides;
 import retrofit2.Retrofit;
 
 /**
- * Created by lxy on 2017/5/11.
+ * Created by lxy
  */
 
 @Module

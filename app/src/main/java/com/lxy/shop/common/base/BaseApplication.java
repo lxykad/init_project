@@ -8,7 +8,7 @@ import com.lxy.shop.di.module.AppModule;
 import com.lxy.shop.di.module.HttpModule;
 
 /**
- * Created by lxy on 2017/5/11.
+ * Created by lxy
  */
 
 public class BaseApplication extends Application {

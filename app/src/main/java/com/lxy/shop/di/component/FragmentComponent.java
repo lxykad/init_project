@@ -7,7 +7,7 @@ import com.lxy.shop.ui.home.fragment.HomeFragment;
 import dagger.Component;
 
 /**
- * Created by lxy on 2017/5/11.
+ * Created by lxy
  */
 @ActivityScope
 @Component(modules = FragmentModule.class, dependencies = AppComponent.class)

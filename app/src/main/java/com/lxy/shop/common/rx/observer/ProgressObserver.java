@@ -8,7 +8,7 @@ import com.lxy.shop.common.exception.BaseException;
 import io.reactivex.disposables.Disposable;
 
 /**
- * Created by lxy on 2017/6/9.
+ * Created by lxy
  */
 
 public abstract class ProgressObserver<T> extends ErrorHandObserver<T> {
@@ -45,7 +45,7 @@ public abstract class ProgressObserver<T> extends ErrorHandObserver<T> {
     @Override
     public void onError(Throwable e) {
         super.onError(e);
-
+        System.out.println("err===="+e.toString());
         BaseException baseException = mErrorHandler.handleError(e);
         mView.showError(baseException.getDisplayMessage());
     }

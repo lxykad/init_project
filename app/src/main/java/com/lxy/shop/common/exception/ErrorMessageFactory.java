@@ -8,23 +8,6 @@ public class ErrorMessageFactory {
 
         switch (code) {
 
-            case BaseException.HTTP_ERROR:
-
-                errorMsg = "网络连接错误";
-
-                break;
-
-            case BaseException.SOCKET_TIMEOUT_ERROR:
-
-                errorMsg = "网络超时";
-
-                break;
-            case BaseException.SOCKET_ERROR:
-
-                errorMsg = "网络不可用";
-
-                break;
-
             case BaseException.ERROR_HTTP_400:
 
                 errorMsg = "网络请求错误";
@@ -42,22 +25,10 @@ public class ErrorMessageFactory {
                 errorMsg = "服务器错误";
 
                 break;
-
-            case ApiException.ERROR_API_SYSTEM:
-                errorMsg = "服务器错误";
-                break;
-
-            case ApiException.ERROR_API_ACCOUNT_FREEZE:
-                errorMsg = "账户被冻结";
-                break;
-
-            case ApiException.ERROR_API_NO_PERMISSION:
-                errorMsg = "无权限";
-                break;
-
-            case ApiException.ERROR_API_LOGIN:
-                errorMsg = "用户名或密码错误";
-                break;
+//
+//            case ApiException.ERROR_API_NO_PERMISSION:
+//                errorMsg = "无权限";
+//                break;
 
             default:
                 errorMsg = "未知错误";
