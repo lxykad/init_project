@@ -1,6 +1,5 @@
 package com.lxy.shop.common.base;
 
-
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
@@ -9,13 +8,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.lxy.shop.R;
 import com.lxy.shop.databinding.ContentMultiStatusBinding;
 import com.lxy.shop.di.component.AppComponent;
-
 import javax.inject.Inject;
-
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 

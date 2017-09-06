@@ -3,6 +3,7 @@ package com.lxy.shop.ui;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.lxy.shop.R;
@@ -16,7 +17,7 @@ import com.lxy.shop.ui.home.fragment.HomeFragment;
 
 import java.util.ArrayList;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends AppCompatActivity {
 
     private final String[] mTitles = {"首页", "Android", "iOS", "我的"};
     private ActivityMainBinding mBinding;
@@ -52,9 +53,9 @@ public class MainActivity extends BaseActivity {
 //        mBinding.tabLayout.setCurrentTab(0);
     }
 
-    @Override
-    protected void setActivityComponent(AppComponent appComponent) {
-
-    }
+//    @Override
+//    protected void setActivityComponent(AppComponent appComponent) {
+//
+//    }
 
 }

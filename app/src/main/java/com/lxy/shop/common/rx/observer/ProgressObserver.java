@@ -47,7 +47,6 @@ public abstract class ProgressObserver<T> extends ErrorHandObserver<T> {
     @Override
     public void onError(Throwable e) {
         super.onError(e);
-        System.out.println("err===="+e.getMessage());
         BaseException baseException = mErrorHandler.handleError(e);
         mView.showError(baseException.getDisplayMessage());
     }

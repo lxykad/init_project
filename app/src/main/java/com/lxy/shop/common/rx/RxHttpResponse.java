@@ -34,7 +34,6 @@ public class RxHttpResponse {
                 return upstream.flatMap(new Function<Response<T>, ObservableSource<T>>() {
                     @Override
                     public ObservableSource<T> apply(@NonNull final Response<T> responseBean) throws Exception {
-
                         if (responseBean.code() == 200) {//请求成功
                             return Observable.create(new ObservableOnSubscribe<T>() {
                                 @Override

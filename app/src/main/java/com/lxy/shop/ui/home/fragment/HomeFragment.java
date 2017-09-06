@@ -3,7 +3,6 @@ package com.lxy.shop.ui.home.fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 import android.widget.Toast;
-
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lxy.shop.R;
 import com.lxy.shop.common.base.BaseMainFragment;
@@ -15,7 +14,6 @@ import com.lxy.shop.ui.home.AndroidPresenter;
 import com.lxy.shop.ui.home.SkilBean;
 import com.lxy.shop.ui.home.adapter.HomeAdapter;
 import com.lxy.shop.ui.home.contract.SkilContract;
-
 import java.util.ArrayList;
 import java.util.List;
 
