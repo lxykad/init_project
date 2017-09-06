@@ -4,7 +4,6 @@ import com.lxy.shop.common.base.BasePresenter;
 import com.lxy.shop.common.rx.RxHttpResponse;
 import com.lxy.shop.common.rx.observer.ProgressObserver;
 import com.lxy.shop.ui.home.contract.SkilContract;
-
 import javax.inject.Inject;
 
 /**
@@ -20,7 +19,7 @@ public class AndroidPresenter extends BasePresenter<SkilModel, SkilContract.View
 
     public void getAndroidData() {
 
-        mModel.getList("Android", 2, 1)
+        mModel.getList("Android", 15, 1)
                 .compose(RxHttpResponse.<SkilBean>handResult())
                 .subscribe(new ProgressObserver<SkilBean>(mContext,mView) {
                     @Override

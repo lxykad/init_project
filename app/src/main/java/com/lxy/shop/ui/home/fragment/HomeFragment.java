@@ -3,9 +3,16 @@ package com.lxy.shop.ui.home.fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 import android.widget.Toast;
+
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lxy.shop.R;
 import com.lxy.shop.common.base.BaseMainFragment;
+import com.lxy.shop.common.constant.Constant;
+import com.lxy.shop.common.http.HttpHelper;
+import com.lxy.shop.common.rx.RxHttpResponse;
+import com.lxy.shop.common.rx.observer.ProgressObserver;
+import com.lxy.shop.data.api.ApiService;
+import com.lxy.shop.data.api.CacheProviders;
 import com.lxy.shop.databinding.FragmentRecommendBinding;
 import com.lxy.shop.di.component.AppComponent;
 import com.lxy.shop.di.component.DaggerFragmentComponent;
@@ -14,8 +21,25 @@ import com.lxy.shop.ui.home.AndroidPresenter;
 import com.lxy.shop.ui.home.SkilBean;
 import com.lxy.shop.ui.home.adapter.HomeAdapter;
 import com.lxy.shop.ui.home.contract.SkilContract;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import io.reactivex.Observer;
+import io.reactivex.Scheduler;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
+import io.rx_cache2.DynamicKey;
+import io.rx_cache2.EvictDynamicKey;
+import io.rx_cache2.Reply;
+import io.rx_cache2.Source;
+import io.rx_cache2.internal.RxCache;
+import io.victoralbertos.jolyglot.GsonSpeaker;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by lxy
@@ -26,6 +50,8 @@ public class HomeFragment extends BaseMainFragment<AndroidPresenter> implements 
     private FragmentRecommendBinding mBinding;
     private HomeAdapter mAdapter;
     private List<SkilBean.RealBean> mList;
+    private CacheProviders mCacheProviders;
+    private ApiService mApiService;
 
     @Override
     protected void visiableToUser() {
@@ -72,10 +98,48 @@ public class HomeFragment extends BaseMainFragment<AndroidPresenter> implements 
                 Toast.makeText(view.getContext(), appBean.who, Toast.LENGTH_SHORT).show();
             }
         });
+
+        //如果需要rxcache做缓存，实例化下面内容
+        mCacheProviders = new RxCache.Builder()
+                .persistence(getContext().getCacheDir(), new GsonSpeaker())
+                .using(CacheProviders.class);
+        mApiService = new Retrofit.Builder()
+                .baseUrl(HttpHelper.BASE_URL)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build().create(ApiService.class);
     }
 
     public void LoadData() {
-        mPresenter.getAndroidData();
+//        mPresenter.getAndroidData();//不缓存
+
+        // rxcache缓存请求
+        mCacheProviders.getSkilList(mApiService.getSkilList("Android", 15, 1),new DynamicKey(1), new EvictDynamicKey(false))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<Reply<Response<SkilBean>>>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(Reply<Response<SkilBean>> responseReply) {
+                        System.out.println("reply======="+ responseReply.getSource());//CLOUD
+                        showResust(responseReply.getData().body().results);
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
     }
 
     @Override

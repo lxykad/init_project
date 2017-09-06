@@ -7,8 +7,8 @@ android {
         applicationId "com.lxy.shop"
         minSdkVersion 19
         targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
+        versionCode 9
+        versionName "0.9"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
@@ -48,8 +48,8 @@ dependencies {
     compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
     compile 'com.squareup.retrofit2:converter-gson:2.3.0'
     //RxCache
-    //compile "com.github.VictorAlbertos.RxCache:runtime:1.8.0-2.x"
-    //compile 'com.github.VictorAlbertos.Jolyglot:gson:0.0.3'
+    compile "com.github.VictorAlbertos.RxCache:runtime:1.8.0-2.x"
+    compile 'com.github.VictorAlbertos.Jolyglot:gson:0.0.3'
     //Okhttp-interceptor
     compile 'com.squareup.okhttp3:logging-interceptor:3.6.0'
     compile 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
