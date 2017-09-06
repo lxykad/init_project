@@ -12,6 +12,7 @@ import retrofit2.http.Path;
  */
 public interface ApiService {
 
+    // http://192.168.1.130:3000/opt/token
     public static final String BASE_URL = "http://gank.io/api/data/";
 
     @GET("{type}/{count}/{page}")

@@ -61,7 +61,6 @@ public class HttpModule {
                 .connectTimeout(10, TimeUnit.SECONDS)
                 // 读取超时时间设置
                 .readTimeout(10, TimeUnit.SECONDS)
-
                 .build();
     }
 
