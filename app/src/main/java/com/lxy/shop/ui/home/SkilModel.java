@@ -1,9 +1,6 @@
 package com.lxy.shop.ui.home;
 
-import com.lxy.shop.common.rx.BaseBean;
 import com.lxy.shop.data.api.ApiService;
-
-import java.util.List;
 
 import io.reactivex.Observable;
 import retrofit2.Response;

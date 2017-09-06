@@ -1,4 +1,4 @@
-package com.lxy.shop.ui.usercenter;
+package com.lxy.shop.common;
 
 import java.io.Serializable;
 
