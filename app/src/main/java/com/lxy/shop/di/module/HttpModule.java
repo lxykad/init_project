@@ -45,7 +45,6 @@ public class HttpModule {
 
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
 
-
         if (BuildConfig.DEBUG) {
             // log用拦截器
             HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
