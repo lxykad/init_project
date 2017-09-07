@@ -21,3 +21,14 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+def androidSupportVersion = '25.3.1'
+ext {
+    compileSdkVersion = 25
+    buildToolsVersion = "25.0.2"
+    minSdkVersion = 19
+    //向前兼容，保存新旧两种逻辑，并通过 if-else 方法来判断执行哪种逻辑
+    targetSdkVersion = 25
+    appcompatV7 = "com.android.support:appcompat-v7:$androidSupportVersion"
+    support_version = "25.3.1"
+}

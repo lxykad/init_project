@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
+
+import com.lxy.shop.BuildConfig;
 import com.lxy.shop.R;
 import com.lxy.shop.common.User;
 import com.lxy.shop.common.base.BaseActivity;
