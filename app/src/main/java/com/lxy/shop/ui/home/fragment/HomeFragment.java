@@ -123,33 +123,6 @@ public class HomeFragment extends BaseMainFragment<AndroidPresenter> implements 
 //        mPresenter.getAndroidData();//不缓存
         mPresenter.getAndroidDataWithCache();
 
-//        BaseApplication.getInstance().getRepository()
-//                .getSkilList(1,false)
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(new Observer<Reply<Response<SkilBean>>>() {
-//                    @Override
-//                    public void onSubscribe(Disposable d) {
-//
-//                    }
-//
-//                    @Override
-//                    public void onNext(Reply<Response<SkilBean>> responseReply) {
-//                        System.out.println("reply======="+ responseReply.getSource());//CLOUD
-//                        showResust(responseReply.getData().body().results);
-//                    }
-//
-//                    @Override
-//                    public void onError(Throwable e) {
-//
-//                    }
-//
-//                    @Override
-//                    public void onComplete() {
-//
-//                    }
-//                });
-
     }
 
     @Override

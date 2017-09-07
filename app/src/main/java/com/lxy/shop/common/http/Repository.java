@@ -7,6 +7,8 @@ import com.lxy.shop.ui.home.SkilBean;
 import java.io.File;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import io.reactivex.Observable;
 import io.reactivex.annotations.Nullable;
 import io.rx_cache2.DynamicKey;
@@ -30,6 +32,8 @@ public class Repository {
 
     public Repository(File cacheDir) {
         cacheProviders = new RxCache.Builder()
+//                .setMaxMBPersistenceCache(50)
+//                .setMaxMBPersistenceCache(50)
                 .persistence(cacheDir, new GsonSpeaker())
                 .using(CacheProviders.class);
         mApiService = new Retrofit.Builder()
