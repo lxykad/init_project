@@ -20,6 +20,20 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            resValue "bool", "DEBUG", 'false'
+            resValue "bool", "FLAVOR", 'true'
+            resValue "bool", "LOG", 'true'
+        }
+
+        debug {
+            minifyEnabled false
+            debuggable true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            resValue "bool", "DEBUG", 'true'
+            resValue "bool", "FLAVOR", 'false'
+            resValue "bool", "LOG", 'true'
+            zipAlignEnabled false
+            shrinkResources false
         }
     }
 }
