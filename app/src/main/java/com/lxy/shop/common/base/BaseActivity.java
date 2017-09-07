@@ -15,12 +15,10 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
-
 import com.lxy.shop.R;
 import com.lxy.shop.utils.DensityUtil;
 import com.lxy.shop.databinding.ContentMultiStatusBinding;
 import com.lxy.shop.di.component.AppComponent;
-
 import javax.inject.Inject;
 
 import io.reactivex.disposables.CompositeDisposable;
@@ -83,7 +81,6 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
 
     @Override
     public void showLoading(Disposable disposable) {
-        System.out.println("baseActivity=======loading");
         showProgressLayout();
         mDisposable = disposable;
         mSubsList.add(disposable);
@@ -91,7 +88,6 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
 
     @Override
     public void dismissLoading() {
-        System.out.println("baseActivity=======dismissloading");
         showContentView();
         mSubsList.remove(mDisposable);
     }

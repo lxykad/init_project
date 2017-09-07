@@ -3,6 +3,8 @@ package com.lxy.shop.ui.usercenter;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
+
+import com.lxy.shop.BuildConfig;
 import com.lxy.shop.R;
 import com.lxy.shop.common.User;
 import com.lxy.shop.common.base.BaseActivity;
@@ -13,7 +15,7 @@ import com.lxy.shop.di.module.ActivityModule;
 import com.lxy.shop.ui.usercenter.contract.UserContract;
 import com.lxy.shop.ui.usercenter.presenter.UserPresenter;
 
-public class UsercenterActivity extends BaseActivity<UserPresenter> implements UserContract.View{
+public class UsercenterActivity extends BaseActivity<UserPresenter> implements UserContract.View {
 
     private ActivityUsercenterBinding mBinding;
 
@@ -21,7 +23,7 @@ public class UsercenterActivity extends BaseActivity<UserPresenter> implements U
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mPresenter.getUserInfo();
+        // mPresenter.getUserInfo();
     }
 
     @Override
@@ -40,7 +42,8 @@ public class UsercenterActivity extends BaseActivity<UserPresenter> implements U
     }
 
     public void clickTest(View view) {
-        mPresenter.getUserInfo();
+//        mPresenter.getUserInfo();
+        showToast(BuildConfig.DEBUG + "");
     }
 
     @Override

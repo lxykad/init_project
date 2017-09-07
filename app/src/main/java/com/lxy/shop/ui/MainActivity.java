@@ -5,6 +5,7 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.lxy.shop.R;
@@ -22,7 +23,7 @@ import java.util.ArrayList;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Consumer;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     private final String[] mTitles = {"首页", "Android", "iOS", "我的"};
     private ActivityMainBinding mBinding;
@@ -39,8 +40,22 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         initData();
+    }
+
+    @Override
+    protected void onEmptyClick(View view) {
+
+    }
+
+    @Override
+    public int getLayoutId() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    public void initChildBinding() {
+        mBinding = (ActivityMainBinding) mChildBinding;
     }
 
     private void initData() {
@@ -58,9 +73,9 @@ public class MainActivity extends AppCompatActivity {
 //        mBinding.tabLayout.setCurrentTab(0);
     }
 
-//    @Override
-//    protected void setActivityComponent(AppComponent appComponent) {
-//
-//    }
+    @Override
+    protected void setActivityComponent(AppComponent appComponent) {
+
+    }
 
 }
