@@ -1,5 +1,6 @@
 package com.lxy.shop.ui;
 
+import android.Manifest;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -14,8 +15,12 @@ import com.lxy.shop.ui.classify.MyFragment;
 import com.lxy.shop.ui.game.IosFragment;
 import com.lxy.shop.ui.ranking.AndroidFragment;
 import com.lxy.shop.ui.home.fragment.HomeFragment;
+import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.util.ArrayList;
+
+import io.reactivex.annotations.NonNull;
+import io.reactivex.functions.Consumer;
 
 public class MainActivity extends AppCompatActivity {
 

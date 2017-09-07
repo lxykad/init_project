@@ -7,7 +7,6 @@ import java.util.concurrent.TimeUnit;
 import io.reactivex.Observable;
 import io.rx_cache2.DynamicKey;
 import io.rx_cache2.EvictDynamicKey;
-import io.rx_cache2.EvictProvider;
 import io.rx_cache2.LifeCache;
 import io.rx_cache2.Reply;
 import retrofit2.Response;
@@ -19,7 +18,7 @@ import retrofit2.Response;
 public interface CacheProviders {
 
     // 返回结果包装为reply 可以查看数据是的来源 getSource
-    @LifeCache(duration = 2,timeUnit = TimeUnit.MINUTES)
+    @LifeCache(duration = 5,timeUnit = TimeUnit.HOURS)
     public Observable<Reply<Response<SkilBean>>> getSkilList(Observable<Response<SkilBean>> bean, DynamicKey dynamicKey, EvictDynamicKey evictDynamicKey);
 
 }

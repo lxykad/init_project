@@ -6,9 +6,11 @@ import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lxy.shop.R;
+import com.lxy.shop.common.base.BaseApplication;
 import com.lxy.shop.common.base.BaseMainFragment;
 import com.lxy.shop.common.constant.Constant;
 import com.lxy.shop.common.http.HttpHelper;
+import com.lxy.shop.common.http.Repository;
 import com.lxy.shop.common.rx.RxHttpResponse;
 import com.lxy.shop.common.rx.observer.ProgressObserver;
 import com.lxy.shop.data.api.ApiService;
@@ -22,16 +24,20 @@ import com.lxy.shop.ui.home.SkilBean;
 import com.lxy.shop.ui.home.adapter.HomeAdapter;
 import com.lxy.shop.ui.home.contract.SkilContract;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.Observer;
 import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 import io.rx_cache2.DynamicKey;
 import io.rx_cache2.EvictDynamicKey;
+import io.rx_cache2.EvictProvider;
 import io.rx_cache2.Reply;
 import io.rx_cache2.Source;
 import io.rx_cache2.internal.RxCache;
@@ -98,13 +104,16 @@ public class HomeFragment extends BaseMainFragment<AndroidPresenter> implements 
                 Toast.makeText(view.getContext(), appBean.who, Toast.LENGTH_SHORT).show();
             }
         });
-
         //如果需要rxcache做缓存，实例化下面内容
+        File cacheFile = new File(getContext().getCacheDir(), "rxcache");
+        if (!cacheFile.exists()) {
+            cacheFile.mkdirs();
+        }
         mCacheProviders = new RxCache.Builder()
-                .persistence(getContext().getCacheDir(), new GsonSpeaker())
+                .persistence(cacheFile, new GsonSpeaker())
                 .using(CacheProviders.class);
         mApiService = new Retrofit.Builder()
-                .baseUrl(HttpHelper.BASE_URL)
+                .baseUrl(ApiService.BASE_URL)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build().create(ApiService.class);
@@ -112,34 +121,35 @@ public class HomeFragment extends BaseMainFragment<AndroidPresenter> implements 
 
     public void LoadData() {
 //        mPresenter.getAndroidData();//不缓存
+        mPresenter.getAndroidDataWithCache();
 
-        // rxcache缓存请求
-        mCacheProviders.getSkilList(mApiService.getSkilList("Android", 15, 1),new DynamicKey(1), new EvictDynamicKey(false))
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<Reply<Response<SkilBean>>>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
+//        BaseApplication.getInstance().getRepository()
+//                .getSkilList(1,false)
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new Observer<Reply<Response<SkilBean>>>() {
+//                    @Override
+//                    public void onSubscribe(Disposable d) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onNext(Reply<Response<SkilBean>> responseReply) {
+//                        System.out.println("reply======="+ responseReply.getSource());//CLOUD
+//                        showResust(responseReply.getData().body().results);
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onComplete() {
+//
+//                    }
+//                });
 
-                    }
-
-                    @Override
-                    public void onNext(Reply<Response<SkilBean>> responseReply) {
-                        System.out.println("reply======="+ responseReply.getSource());//CLOUD
-                        showResust(responseReply.getData().body().results);
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
     }
 
     @Override

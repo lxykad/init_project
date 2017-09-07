@@ -12,7 +12,7 @@ import retrofit2.Response;
 
 public class SkilModel {
 
-    private ApiService mApiService;
+    public ApiService mApiService;
 
 
     public SkilModel(ApiService mApiService) {
