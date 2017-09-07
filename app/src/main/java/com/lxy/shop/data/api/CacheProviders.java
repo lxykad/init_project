@@ -18,7 +18,7 @@ import retrofit2.Response;
 public interface CacheProviders {
 
     // 返回结果包装为reply 可以查看数据是的来源 getSource
-    @LifeCache(duration = 5,timeUnit = TimeUnit.HOURS)
+    @LifeCache(duration = 2,timeUnit = TimeUnit.MINUTES)
     public Observable<Reply<Response<SkilBean>>> getSkilList(Observable<Response<SkilBean>> bean, DynamicKey dynamicKey, EvictDynamicKey evictDynamicKey);
 
 }

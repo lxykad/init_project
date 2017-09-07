@@ -33,15 +33,11 @@ public class BaseApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
         sInstance = this;
+
         mAppComponent = DaggerAppComponent.builder().appModule(new AppModule(this)).httpModule(new HttpModule()).build();
         Hawk.init(this).build();
 
-//        File cacheFile = new File(getCacheDir(),"rxCache");
-//        if (!cacheFile.exists()) {
-//            cacheFile.mkdirs();
-//        }
         mRepository = Repository.init(getCacheDir());
 
     }

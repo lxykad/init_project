@@ -3,7 +3,6 @@ package com.lxy.shop.data.api;
 import com.lxy.shop.common.User;
 import com.lxy.shop.ui.home.SkilBean;
 import io.reactivex.Observable;
-import io.rx_cache2.Reply;
 import retrofit2.Response;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
@@ -17,7 +16,6 @@ public interface ApiService {
     String HEADER_API_VERSION = "Accept: application/vnd.github.v3+json";
 
 
-    // http://192.168.1.130:3000/opt/token
     public static final String BASE_URL = "http://gank.io/api/data/";
 //    public static final String BASE_URL = "http://192.168.1.130:3000/opt/";
 

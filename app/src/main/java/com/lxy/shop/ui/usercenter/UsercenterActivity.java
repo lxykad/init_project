@@ -50,7 +50,6 @@ public class UsercenterActivity extends BaseActivity<UserPresenter> implements U
                 .activityModule(new ActivityModule(this))
                 .build()
                 .inject(this);
-
     }
 
     @Override

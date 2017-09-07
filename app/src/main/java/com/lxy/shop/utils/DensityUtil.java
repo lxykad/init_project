@@ -1,4 +1,4 @@
-package com.lxy.shop.common.util;
+package com.lxy.shop.utils;
 
 import android.annotation.TargetApi;
 import android.content.Context;
