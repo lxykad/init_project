@@ -2,12 +2,15 @@ package com.lxy.shop.common.base;
 
 import android.app.Application;
 
+import com.lxy.shop.R;
 import com.lxy.shop.common.http.Repository;
 import com.lxy.shop.di.component.AppComponent;
 import com.lxy.shop.di.component.DaggerAppComponent;
 import com.lxy.shop.di.module.AppModule;
 import com.lxy.shop.di.module.HttpModule;
 import com.orhanobut.hawk.Hawk;
+import com.orhanobut.logger.AndroidLogAdapter;
+import com.orhanobut.logger.Logger;
 
 import java.io.File;
 
@@ -39,6 +42,13 @@ public class BaseApplication extends Application {
         Hawk.init(this).build();
 
         mRepository = Repository.init(getCacheDir());
+        Logger.addLogAdapter(new AndroidLogAdapter(){
+            @Override
+            public boolean isLoggable(int priority, String tag) {
+
+               return getResources().getBoolean(R.bool.DEBUG);
+            }
+        });
 
     }
 

@@ -76,5 +76,7 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.0.0-RC0'
     //hawk
     compile 'com.orhanobut:hawk:2.0.1'
+    //logger
+    compile 'com.orhanobut:logger:2.1.1'
 
 }
