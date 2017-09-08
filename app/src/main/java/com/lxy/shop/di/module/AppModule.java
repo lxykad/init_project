@@ -1,7 +1,6 @@
 package com.lxy.shop.di.module;
 
 import com.lxy.shop.common.base.BaseApplication;
-
 import dagger.Module;
 import dagger.Provides;
 import retrofit2.Retrofit;
@@ -24,6 +23,4 @@ public class AppModule {
 
         return mApplication;
     }
-
-
 }

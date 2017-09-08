@@ -7,6 +7,7 @@ import java.util.concurrent.TimeUnit;
 import io.reactivex.Observable;
 import io.rx_cache2.DynamicKey;
 import io.rx_cache2.EvictDynamicKey;
+import io.rx_cache2.EvictProvider;
 import io.rx_cache2.LifeCache;
 import io.rx_cache2.Reply;
 import retrofit2.Response;

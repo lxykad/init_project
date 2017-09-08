@@ -26,6 +26,7 @@ public class Repository {
     private final CacheProviders cacheProviders;
     private final ApiService mApiService;
 
+    // .useExpiredDataIfLoaderNotAvailable(true)
     public Repository(File cacheDir) {
         cacheProviders = new RxCache.Builder()
                 .persistence(cacheDir, new GsonSpeaker())
@@ -34,7 +35,8 @@ public class Repository {
                 .baseUrl(ApiService.BASE_URL)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
-                .build().create(ApiService.class);
+                .build()
+                .create(ApiService.class);
     }
 
     public static Repository init(File cacheDir) {
@@ -45,5 +47,4 @@ public class Repository {
 
         return cacheProviders.getSkilList(mApiService.getSkilList(type, count, page),new DynamicKey(page),new EvictDynamicKey(loadServer));
     }
-
 }

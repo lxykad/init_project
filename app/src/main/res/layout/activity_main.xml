@@ -7,11 +7,21 @@
         android:layout_height="match_parent"
         tools:context="com.lxy.shop.ui.MainActivity">
 
+        <com.lxy.shop.widget.TemplateTitle
+            android:id="@+id/title_layout"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            tl:canBack="true"
+            tl:titleText="test">
+
+        </com.lxy.shop.widget.TemplateTitle>
+
         <FrameLayout
             android:id="@+id/framelayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@+id/tab_layout"
+            android:layout_below="@+id/title_layout"
             android:background="#ffffff" />
 
         <com.flyco.tablayout.CommonTabLayout
