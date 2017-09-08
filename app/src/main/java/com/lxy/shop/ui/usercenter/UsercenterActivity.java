@@ -4,20 +4,27 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
+
 import com.lxy.shop.R;
 import com.lxy.shop.common.User;
 import com.lxy.shop.common.base.BaseActivity;
+import com.lxy.shop.common.http.Repository;
 import com.lxy.shop.databinding.ActivityUsercenterBinding;
 import com.lxy.shop.di.component.AppComponent;
 import com.lxy.shop.di.component.DaggerActivityComponent;
 import com.lxy.shop.di.module.ActivityModule;
-import com.lxy.shop.ui.MainActivity;
+import com.lxy.shop.di.module.RepositoryModule;
+import com.lxy.shop.ui.TestActivity;
 import com.lxy.shop.ui.usercenter.contract.UserContract;
 import com.lxy.shop.ui.usercenter.presenter.UserPresenter;
+
+import javax.inject.Inject;
 
 public class UsercenterActivity extends BaseActivity<UserPresenter> implements UserContract.View {
 
     private ActivityUsercenterBinding mBinding;
+    @Inject
+    Repository repository;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,7 +51,9 @@ public class UsercenterActivity extends BaseActivity<UserPresenter> implements U
     public void clickTest(View view) {
 //        mPresenter.getUserInfo();
         //showToast(BaseApplication.getInstance().getResources().getBoolean(R.bool.DEBUG) + "");
-        startActivity(new Intent(this, MainActivity.class));
+//        startActivity(new Intent(this, TestActivity.class));
+//        showToast(repository + "");
+        TestActivity.goToPage(view.getContext(),repository);
     }
 
     @Override
@@ -52,6 +61,7 @@ public class UsercenterActivity extends BaseActivity<UserPresenter> implements U
         DaggerActivityComponent.builder()
                 .appComponent(appComponent)
                 .activityModule(new ActivityModule(this))
+                .repositoryModule(new RepositoryModule())
                 .build()
                 .inject(this);
     }

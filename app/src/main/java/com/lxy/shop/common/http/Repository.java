@@ -23,8 +23,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Repository {
 
-    private final CacheProviders cacheProviders;
-    private final ApiService mApiService;
+    private CacheProviders cacheProviders;
+    private ApiService mApiService;
 
     // .useExpiredDataIfLoaderNotAvailable(true)
     public Repository(File cacheDir) {
@@ -43,8 +43,9 @@ public class Repository {
         return new Repository(cacheDir);
     }
 
-    public Observable<Reply<Response<SkilBean>>> getSkilList(String type,int count,int page, final boolean loadServer) {
+    // 获取 Android 列表
+    public Observable<Reply<Response<SkilBean>>> getSkilList(String type, int count, int page, final boolean loadServer) {
 
-        return cacheProviders.getSkilList(mApiService.getSkilList(type, count, page),new DynamicKey(page),new EvictDynamicKey(loadServer));
+        return cacheProviders.getSkilList(mApiService.getSkilList(type, count, page), new DynamicKey(page), new EvictDynamicKey(loadServer));
     }
 }
