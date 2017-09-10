@@ -9,6 +9,7 @@ import com.orhanobut.logger.Logger;
 
 import javax.inject.Inject;
 
+import io.reactivex.Flowable;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -31,14 +32,42 @@ public class AndroidPresenter extends BasePresenter<SkilModel, SkilContract.View
 
     public void getAndroidData() {
 
+//        mModel.getList("Android", 15, 1)
+//                .compose(RxHttpResponse.<SkilBean>handResult())
+//                .subscribe(new ProgressObserver<SkilBean>(mContext, mView) {
+//                    @Override
+//                    public void onNext(SkilBean skilBean) {
+//                        mView.showResust(skilBean.results);
+//                    }
+//                });
+
+
         mModel.getList("Android", 15, 1)
-                .compose(RxHttpResponse.<SkilBean>handResult())
-                .subscribe(new ProgressObserver<SkilBean>(mContext, mView) {
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<Response<SkilBean>>() {
                     @Override
-                    public void onNext(SkilBean skilBean) {
-                        mView.showResust(skilBean.results);
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(Response<SkilBean> bean) {
+                        mView.showResust(bean.body().results);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
                     }
                 });
+
+        
 
     }
 

@@ -8,6 +8,7 @@ import com.lxy.shop.di.component.AppComponent;
 import com.lxy.shop.di.component.DaggerAppComponent;
 import com.lxy.shop.di.module.AppModule;
 import com.lxy.shop.di.module.HttpModule;
+import com.lxy.shop.utils.Utils;
 import com.orhanobut.hawk.Hawk;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
@@ -40,6 +41,7 @@ public class BaseApplication extends Application {
 
         mAppComponent = DaggerAppComponent.builder().appModule(new AppModule(this)).httpModule(new HttpModule()).build();
         Hawk.init(this).build();
+        Utils.init(this);
 
         mRepository = Repository.init(getCacheDir());
         Logger.addLogAdapter(new AndroidLogAdapter(){
