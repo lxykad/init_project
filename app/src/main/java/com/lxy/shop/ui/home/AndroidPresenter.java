@@ -52,7 +52,7 @@ public class AndroidPresenter extends BasePresenter<SkilModel, SkilContract.View
             }
         };
 
-        Observable<SkilBean> observable = CacheManager.getInstance().load(cacheKey, SkilBean.class, networkCache);
+        Observable<SkilBean> observable = CacheManager.getInstance().load("cacheKeyhhhh", SkilBean.class, networkCache);
         observable.subscribe(new Observer<SkilBean>() {
             @Override
             public void onSubscribe(Disposable d) {

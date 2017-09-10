@@ -9,6 +9,9 @@ import com.orhanobut.logger.Logger;
 
 import java.io.UnsupportedEncodingException;
 
+import io.reactivex.Flowable;
+import io.reactivex.FlowableEmitter;
+import io.reactivex.FlowableOnSubscribe;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
@@ -41,7 +44,7 @@ public class MemoryCache implements ICache {
 
     @Override
     public <T extends BaseCacheBean> Observable<T> get(final String key, final Class<T> cls) {
-        return Observable.create(new ObservableOnSubscribe<T>() {
+        Observable observable = Observable.create(new ObservableOnSubscribe<T>() {
             @Override
             public void subscribe(ObservableEmitter<T> e) throws Exception {
                 System.out.println("cache=========load from memory:" + key);
@@ -52,7 +55,8 @@ public class MemoryCache implements ICache {
                 }
                 if (TextUtils.isEmpty(result)) {
 
-                    e.onNext(null);
+//                    e.onNext(null);
+
                 } else {
 
                     T t = new Gson().fromJson(result, cls);
@@ -61,6 +65,8 @@ public class MemoryCache implements ICache {
                 e.onComplete();
             }
         });
+        observable.subscribe();
+        return observable;
     }
 
     @Override

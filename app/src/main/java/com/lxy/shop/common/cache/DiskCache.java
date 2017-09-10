@@ -27,7 +27,7 @@ public class DiskCache implements ICache {
     @Override
     public <T extends BaseCacheBean> Observable<T> get(final String key, final Class<T> cls) {
 
-        return Observable.create(new ObservableOnSubscribe<T>() {
+        Observable observable = Observable.create(new ObservableOnSubscribe<T>() {
             @Override
             public void subscribe(ObservableEmitter<T> e) throws Exception {
                 System.out.println("cache=========load from disk:" + key);
@@ -39,7 +39,8 @@ public class DiskCache implements ICache {
                 }
                 if (TextUtils.isEmpty(result)) {
 
-                    e.onNext(null);
+//                    e.onNext(null);
+
                 } else {
 
                     T t = new Gson().fromJson(result, cls);
@@ -47,10 +48,13 @@ public class DiskCache implements ICache {
                 }
 
             }
-        })
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                ;
+        }).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+
+        observable.subscribe();
+        return observable;
+
+
     }
 
     @Override

@@ -33,34 +33,17 @@ public class CacheManager {
 
     public <T extends BaseCacheBean> Observable<T> load(String key, Class<T> cls, NetworkCache<T> networkCache) {
 
-//        Observable observable = Observable.concat(
-//                loadFromMemory(key, cls),
-//                loadFromDisk(key, cls),
-//                loadFromNetwork(key, cls, networkCache))
-//                .first(new Func1<T, Boolean>() {
-//                    @Override
-//                    public Boolean call(T t) {
-//
-//                        String result = t == null ? "not exist" :
-//                                t.isExpire() ? "exist but expired" : "exist and not expired";
-//                        Log.v("cache", "result: " + result);
-//
-//                        return t != null && !t.isExpire();
-//                    }
-//                });
-//        return observable;
-
         return Observable.concat(
                 loadFromMemory(key, cls),
-                loadFromDisk(key, cls),
-                loadFromNetwork(key, cls, networkCache)
+                loadFromDisk(key, cls)
+//                loadFromNetwork(key, cls, networkCache)
         ).filter(new Predicate<T>() {
             @Override
             public boolean test(@NonNull T t) throws Exception {
 
                 String result = t == null ? "not exist" :
                         t.isExpire() ? "exist but expired" : "exist and not expired";
-                Log.v("cache", "result: " + result);
+                System.out.println("cache======reuslt:"+result);
 
                 return t != null && !t.isExpire();
             }
