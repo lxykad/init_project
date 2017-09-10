@@ -16,9 +16,13 @@ import com.lxy.shop.ui.home.SkilBean;
 import com.lxy.shop.ui.home.adapter.HomeAdapter;
 import com.lxy.shop.ui.home.contract.SkilContract;
 import com.lxy.shop.utils.NetworkUtils;
+import com.lxy.shop.utils.SDCardUtils;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
+import io.reactivex.Observable;
 
 /**
  * Created by lxy
@@ -78,10 +82,11 @@ public class HomeFragment extends BaseMainFragment<AndroidPresenter> implements 
     }
 
     public void LoadData() {
-        boolean connected = NetworkUtils.isConnected();
-        Toast.makeText(getContext(),connected+"",Toast.LENGTH_SHORT).show();
+//        boolean connected = NetworkUtils.isConnected();
+
+//        Toast.makeText(getContext(),connected+"",Toast.LENGTH_SHORT).show();
         mPresenter.getAndroidData();//不缓存
-//        mPresenter.getAndroidDataWithCache("Android", 15, 1, false);
+//        mPresenter.getAndroidDataWithCache("Android", 15, 2, false);// rxcache 缓存
 
     }
 

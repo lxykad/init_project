@@ -3,8 +3,10 @@ package com.lxy.shop.common.http;
 import com.lxy.shop.data.api.ApiService;
 import com.lxy.shop.data.api.CacheProviders;
 import com.lxy.shop.ui.home.SkilBean;
+import com.lxy.shop.utils.SDCardUtils;
 
 import java.io.File;
+import java.util.List;
 
 import io.reactivex.Observable;
 import io.rx_cache2.DynamicKey;
@@ -26,9 +28,16 @@ public class Repository {
     private CacheProviders cacheProviders;
     private ApiService mApiService;
 
-    // .useExpiredDataIfLoaderNotAvailable(true)
     public Repository(File cacheDir) {
+//        List<String> list = SDCardUtils.getSDCardPaths(false);
+//        File cacheFile = new File(list.get(0),"rxcache");
+//        if (!cacheFile.exists()) {
+//            cacheFile.mkdirs();
+//        }
+//        System.out.println("cacheFile====="+cacheFile);
+
         cacheProviders = new RxCache.Builder()
+                .useExpiredDataIfLoaderNotAvailable(true)
                 .persistence(cacheDir, new GsonSpeaker())
                 .using(CacheProviders.class);
         mApiService = new Retrofit.Builder()

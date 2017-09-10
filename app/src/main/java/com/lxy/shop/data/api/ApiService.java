@@ -28,4 +28,9 @@ public interface ApiService {
 
     @POST("token")
     public Observable<Response<User>> getUserInfo();
+
+    // 测试
+    @GET("{type}/{count}/{page}")
+    public Observable<SkilBean> getList(@Path("type") String type, @Path("count") int count, @Path("page") int perPage);
+
 }

@@ -1,5 +1,7 @@
 package com.lxy.shop.ui.home;
 
+import com.lxy.shop.common.cache.BaseCacheBean;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -7,7 +9,7 @@ import java.util.List;
  * Created by lxy
  */
 
-public class SkilBean implements Serializable {
+public class SkilBean extends BaseCacheBean implements Serializable {
 
     public String error;
     public List<RealBean> results;
